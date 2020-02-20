@@ -9,7 +9,9 @@ Class {
 
 { #category : #'as yet unclassified' }
 Motorola >> battery [
-	^ 5 - (calls * 0.25)
+	 self = 0
+		ifTrue: [ ^ 'phone is dead' ]
+		ifFalse: [ ^ 5 - (calls * 0.25) ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -25,4 +27,9 @@ Motorola >> calls [
 { #category : #accessing }
 Motorola >> calls: anObject [
 	calls := anObject
+]
+
+{ #category : #testing }
+Motorola >> isDead [
+	^ self battery = 0
 ]

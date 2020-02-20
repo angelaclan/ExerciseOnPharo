@@ -47,3 +47,14 @@ PhoneBatteryTest >> testJulianaHasMotorolaWith3call [
 	self assert: juliana cellPhoneBrand equals: 'Motorola'.
 	self assert: motorola battery equals: 4.25
 ]
+
+{ #category : #tests }
+PhoneBatteryTest >> testJulianaHasMotorolaWithNoBattery [
+	| juliana motorola |
+	juliana := User new.
+	motorola := Motorola new.
+	juliana model: motorola.
+	motorola calls: 20.
+	self assert: juliana cellPhoneBrand equals: 'Motorola'.
+	self assert: motorola battery equals: 0
+]

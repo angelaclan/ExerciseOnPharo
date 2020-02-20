@@ -9,7 +9,9 @@ Class {
 
 { #category : #'as yet unclassified' }
 Iphone >> battery [
-	^ 5 - (minutes * 0.01)
+	^ self = 0
+		ifTrue: [ ^ 'dead' ]
+		ifFalse: [ 5 - (minutes * 0.01) ]
 ]
 
 { #category : #'as yet unclassified' }
