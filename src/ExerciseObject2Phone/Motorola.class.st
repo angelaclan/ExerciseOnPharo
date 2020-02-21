@@ -2,7 +2,8 @@ Class {
 	#name : #Motorola,
 	#superclass : #Object,
 	#instVars : [
-		'calls'
+		'calls',
+		'minutes'
 	],
 	#category : #ExerciseObject2Phone
 }
@@ -29,7 +30,12 @@ Motorola >> calls: anObject [
 	calls := anObject
 ]
 
-{ #category : #testing }
-Motorola >> isDead [
-	^ self battery = 0
+{ #category : #accessing }
+Motorola >> minutes [
+	^ minutes
+]
+
+{ #category : #accessing }
+Motorola >> minutes: anObject [
+	minutes := anObject
 ]

@@ -3,14 +3,35 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'model',
-		'minutes'
+		'minutes',
+		'contract'
 	],
 	#category : #ExerciseObject2Phone
 }
 
+{ #category : #'as yet unclassified' }
+User >> billAmount [
+	^ contract fareRate
+]
+
+{ #category : #'as yet unclassified' }
+User >> billAmount: aPhone [
+	^ contract fareRate: aPhone
+]
+
 { #category : #accessing }
 User >> cellPhoneBrand [
 	^ model brand
+]
+
+{ #category : #accessing }
+User >> contract [
+	^ contract
+]
+
+{ #category : #accessing }
+User >> contract: anObject [
+	contract := anObject
 ]
 
 { #category : #accessing }
