@@ -5,5 +5,5 @@ Class {
 }
 
 { #category : #testing }
-Lazy >> canGetOn: aBus [
+Lazy >> shouldGetOn: aBus [
 ]

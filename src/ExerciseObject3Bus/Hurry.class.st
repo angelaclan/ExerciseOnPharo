@@ -5,6 +5,6 @@ Class {
 }
 
 { #category : #testing }
-Hurry >> canGetOn: aBus [
-	^ aBus thereIsAFreePlace
+Hurry >> shouldGetOn: aBus [
+	^ aBus isNotFull
 ]

@@ -24,11 +24,12 @@ FareRateTest >> testCatalinaHasiPhoneWith45mins [
 	catalina := User new.
 	iphone := Iphone new.
 	iphone minutes: 45.
-	catalina 	model: iphone;
-		contract: (MovieStar new phone:iphone; yourself).	
+	catalina
+		model: iphone;
+		contract: MovieStar new.
 	self assert: catalina cellPhoneBrand equals: 'iPhone'.
 	self assert: iphone battery equals: 4.55.
-	self assert: catalina billAmount equals: 27.0
+	self assert: (catalina billAmount: iphone) equals: 27.0
 ]
 
 { #category : #tests }
@@ -75,5 +76,6 @@ FareRateTest >> testJulianaHasMotorolaWithNoBattery [
 		calls: 20;
 		minutes: 113.
 	self assert: juliana cellPhoneBrand equals: 'Motorola'.
-	self assert: motorola battery equals: 66.2
+	self assert: motorola battery equals: 0.
+	self assert: (juliana billAmount: motorola) equals: 48.2
 ]

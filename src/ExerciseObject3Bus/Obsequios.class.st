@@ -5,5 +5,5 @@ Class {
 }
 
 { #category : #testing }
-Obsequios >> canGetOn: aBus [
+Obsequios >> shouldGetOn: aBus [
 ]

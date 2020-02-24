@@ -5,5 +5,5 @@ Class {
 }
 
 { #category : #testing }
-Moderate >> canGetOn: aBus [
+Moderate >> shouldGetOn: aBus [
 ]

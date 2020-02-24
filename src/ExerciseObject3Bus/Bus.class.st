@@ -4,9 +4,8 @@ Class {
 	#instVars : [
 		'seats',
 		'standups',
-		'spaces',
-		'n',
-		'm'
+		'numberOfSeats',
+		'numberOfStandups'
 	],
 	#category : #ExerciseObject3Bus
 }
@@ -19,7 +18,7 @@ Bus >> addPassanger: anEmployee [
 
 { #category : #testing }
 Bus >> canTake: anEmployee [
-	^ self thereIsAFreePlace and: [ anEmployee canGetOn: self ] 
+	^ self isNotFull and: [ anEmployee shouldGetOn: self ] 
 
 ]
 
@@ -30,24 +29,34 @@ Bus >> initialize [
 	standups := OrderedCollection new
 ]
 
-{ #category : #accessing }
-Bus >> m [
-	^ m
+{ #category : #testing }
+Bus >> isBigEnough [
+	^ true
+]
+
+{ #category : #'as yet unclassified' }
+Bus >> isNotFull [
+	^ (seats size < numberOfSeats) or: [standups size < numberOfStandups ]
 ]
 
 { #category : #accessing }
-Bus >> m: anObject [
-	m := anObject
+Bus >> numberOfSeats [
+	^ numberOfSeats
 ]
 
 { #category : #accessing }
-Bus >> n [
-	^ n
+Bus >> numberOfSeats: anObject [
+	numberOfSeats := anObject
 ]
 
 { #category : #accessing }
-Bus >> n: anObject [
-	n := anObject
+Bus >> numberOfStandups [
+	^ numberOfStandups
+]
+
+{ #category : #accessing }
+Bus >> numberOfStandups: anObject [
+	numberOfStandups := anObject
 ]
 
 { #category : #accessing }
@@ -61,16 +70,6 @@ Bus >> seats: anObject [
 ]
 
 { #category : #accessing }
-Bus >> spaces [
-	^ spaces
-]
-
-{ #category : #accessing }
-Bus >> spaces: anObject [
-	spaces := anObject
-]
-
-{ #category : #accessing }
 Bus >> standups [
 	^ standups
 ]
@@ -78,9 +77,4 @@ Bus >> standups [
 { #category : #accessing }
 Bus >> standups: anObject [
 	standups := anObject
-]
-
-{ #category : #'as yet unclassified' }
-Bus >> thereIsAFreePlace [
-	seats size < n and: standups size < m
 ]
