@@ -46,3 +46,34 @@ FareRateTest >> testJulianaHasMotorolaWith1call [
 	self assert: motorola battery equals: 4.75.
 	self assert: (juliana billAmount: motorola) equals: 13
 ]
+
+{ #category : #tests }
+FareRateTest >> testJulianaHasMotorolaWith3call [
+	| juliana motorola |
+	juliana := User new.
+	motorola := Motorola new.
+	juliana
+		model: motorola;
+		contract: Personal new.
+	motorola
+		calls: 3;
+		minutes: 55.
+	self assert: juliana cellPhoneBrand equals: 'Motorola'.
+	self assert: motorola battery equals: 4.25.
+	self assert: (juliana billAmount: motorola) equals: 25
+]
+
+{ #category : #tests }
+FareRateTest >> testJulianaHasMotorolaWithNoBattery [
+	| juliana motorola |
+	juliana := User new.
+	motorola := Motorola new.
+	juliana
+		model: motorola;
+		contract: Personal new.
+	motorola
+		calls: 20;
+		minutes: 113.
+	self assert: juliana cellPhoneBrand equals: 'Motorola'.
+	self assert: motorola battery equals: 66.2
+]
