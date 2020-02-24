@@ -21,10 +21,10 @@ CanTakeEmployeeTest >> testBusAcanNotTakeObsquios1 [
 	| busA obesquios1 |
 	busA := Bus new.
 	busA
-		numberOfSeats: 10;
-		numberOfStandups: 20;
-		hasBoss: false.
+		numberOfSeats: 0;
+		numberOfStandups: 0.
 	obesquios1 := Obsequios new.
+	obesquios1 boss: Hurry new.
 	self assert: (busA canTake: obesquios1) equals: false
 ]
 
@@ -73,9 +73,9 @@ CanTakeEmployeeTest >> testBusAcanTakeObsquios1 [
 	busA := Bus new.
 	busA
 		numberOfSeats: 10;
-		numberOfStandups: 20;
-		hasBoss: true.
+		numberOfStandups: 20.
 	obesquios1 := Obsequios new.
+	obesquios1 boss: Hurry new.
 	self assert: (busA canTake: obesquios1) equals: true
 ]
 
@@ -132,4 +132,36 @@ CanTakeEmployeeTest >> testBusBcanTakeLazy1 [
 		numberOfStandups: 20.
 	lazy1 := Lazy new.
 	self assert: (busB canTake: lazy1) equals: true
+]
+
+{ #category : #tests }
+CanTakeEmployeeTest >> testBusBcanTakeModerate1 [
+	| busA moderate1 |
+	busA := Bus new.
+	busA
+		numberOfSeats: 10;
+		numberOfStandups: 20;
+		seatsTaken: 9;
+		standupsTaken: 10.
+	moderate1 := Moderate new.
+	moderate1
+		acceptNumberOfSeats: 3;
+		acceptNumberOfStandups: 5.
+	self assert: (busA canTake: moderate1) equals: true
+]
+
+{ #category : #tests }
+CanTakeEmployeeTest >> testBusCcanNotTakeModerate1 [
+	| busA moderate1 |
+	busA := Bus new.
+	busA
+		numberOfSeats: 10;
+		numberOfStandups: 20;
+		seatsTaken: 9;
+		standupsTaken: 20.
+	moderate1 := Moderate new.
+	moderate1
+		acceptNumberOfSeats: 3;
+		acceptNumberOfStandups: 5.
+	self assert: (busA canTake: moderate1) equals: false
 ]

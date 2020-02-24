@@ -30,5 +30,5 @@ Moderate >> acceptNumberOfStandups: anObject [
 
 { #category : #testing }
 Moderate >> shouldGetOn: aBus [
-	^ aBus hasSomePlaces: self
+	^ aBus hasPlacesFor: self
 ]

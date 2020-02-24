@@ -16,8 +16,9 @@ Class {
 
 { #category : #adding }
 Bus >> addPassanger: anEmployee [
-
-	self thereIsAFreePlace ifTrue:[ seats ]
+	(self isNotFull and: [ seatsTaken < numberOfSeats ])
+		ifTrue: [ ^ seats add: anEmployee ]
+		ifFalse: [ ^ standups add: anEmployee ]
 ]
 
 { #category : #accessing }
@@ -30,32 +31,22 @@ Bus >> bigEnough: anObject [
 	bigEnough := anObject
 ]
 
-{ #category : #testing }
+{ #category : #action }
 Bus >> canTake: anEmployee [
 	^ self isNotFull and: [ anEmployee shouldGetOn: self ] 
 
 ]
 
-{ #category : #accessing }
-Bus >> hasBoss [
-	^ hasBoss
+{ #category : #action }
+Bus >> hasPlacesFor: anEmployee [
+	^ numberOfSeats - seatsTaken > anEmployee acceptNumberOfSeats
+		or:
+			[ numberOfStandups - standupsTaken > anEmployee acceptNumberOfStandups ]
 ]
 
-{ #category : #accessing }
-Bus >> hasBoss: anObject [
-	hasBoss := anObject
-]
-
-{ #category : #testing }
+{ #category : #action }
 Bus >> hasSeats [
 	^ seats size < numberOfSeats
-]
-
-{ #category : #testing }
-Bus >> hasSomePlaces: anEmployee [
-	seats size - seatsTaken > anEmployee acceptNumberOfSeats
-		or:
-			[ standups size - standupsTaken > anEmployee acceptNumberOfStandups ]
 ]
 
 { #category : #initialize }
@@ -63,6 +54,11 @@ Bus >> initialize [
 	super initialize.
 	seats := OrderedCollection new.
 	standups := OrderedCollection new
+]
+
+{ #category : #adding }
+Bus >> isEmpty [
+	^ seats size = 0 and: [ standups size = 0 ]
 ]
 
 { #category : #'as yet unclassified' }
