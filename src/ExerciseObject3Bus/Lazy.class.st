@@ -6,4 +6,5 @@ Class {
 
 { #category : #testing }
 Lazy >> shouldGetOn: aBus [
+	^ aBus hasSeats
 ]

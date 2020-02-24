@@ -6,4 +6,5 @@ Class {
 
 { #category : #testing }
 Obsequios >> shouldGetOn: aBus [
+	^ aBus hasTheBoss 
 ]
