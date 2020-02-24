@@ -6,5 +6,5 @@ Class {
 
 { #category : #testing }
 Closephobic >> shouldGetOn: aBus [
-	^ aBus isBigEnough 
+	^ aBus bigEnough 
 ]

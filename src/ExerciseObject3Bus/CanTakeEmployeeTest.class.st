@@ -5,6 +5,18 @@ Class {
 }
 
 { #category : #tests }
+CanTakeEmployeeTest >> testBusAcanNotTakeClosePhobic1 [
+	| busA closephobic1 |
+	busA := Bus new.
+	busA
+		numberOfSeats: 10;
+		numberOfStandups: 20;
+		bigEnough: false.
+	closephobic1 := Closephobic new.
+	self assert: (busA canTake: closephobic1) equals: false
+]
+
+{ #category : #tests }
 CanTakeEmployeeTest >> testBusAcanNotTakeObsquios1 [
 	| busA obesquios1 |
 	busA := Bus new.
@@ -23,7 +35,7 @@ CanTakeEmployeeTest >> testBusAcanTakeClosePhobic1 [
 	busA
 		numberOfSeats: 10;
 		numberOfStandups: 20;
-		isBigEnough.
+		bigEnough: true.
 	closephobic1 := Closephobic new.
 	self assert: (busA canTake: closephobic1) equals: true
 ]
@@ -40,7 +52,23 @@ CanTakeEmployeeTest >> testBusAcanTakeHurry1 [
 ]
 
 { #category : #tests }
-CanTakeEmployeeTest >> testBusAcanTakeObsquios [
+CanTakeEmployeeTest >> testBusAcanTakeModerate1 [
+	| busA moderate1 |
+	busA := Bus new.
+	busA
+		numberOfSeats: 10;
+		numberOfStandups: 20;
+		seatsTaken: 5;
+		standupsTaken: 10.
+	moderate1 := Moderate new.
+	moderate1
+		acceptNumberOfSeats: 3;
+		acceptNumberOfStandups: 5.
+	self assert: (busA canTake: moderate1) equals: true
+]
+
+{ #category : #tests }
+CanTakeEmployeeTest >> testBusAcanTakeObsquios1 [
 	| busA obesquios1 |
 	busA := Bus new.
 	busA
