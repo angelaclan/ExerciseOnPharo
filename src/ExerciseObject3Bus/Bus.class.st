@@ -11,6 +11,12 @@ Class {
 	#category : #ExerciseObject3Bus
 }
 
+{ #category : #adding }
+Bus >> addPassanger: anEmployee [
+
+	self thereIsAFreePlace ifTrue:[ seats ]
+]
+
 { #category : #testing }
 Bus >> canTake: anEmployee [
 	^ self thereIsAFreePlace and: [ anEmployee canGetOn: self ] 
