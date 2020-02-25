@@ -3,14 +3,19 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'name',
-		'unitNumber'
+		'stockUnit'
 	],
 	#category : #ExerciseObject4Stock
 }
 
+{ #category : #action }
+ProductOfThisShop >> haveSold: aNumber [
+	stockUnit := stockUnit - aNumber
+]
+
 { #category : #status }
 ProductOfThisShop >> haveStock [
-	^ unitNumber > 0
+	^ stockUnit > 0
 ]
 
 { #category : #accessing }
@@ -24,11 +29,11 @@ ProductOfThisShop >> name: anObject [
 ]
 
 { #category : #accessing }
-ProductOfThisShop >> unitNumber [
-	^ unitNumber
+ProductOfThisShop >> stockUnit [
+	^ stockUnit
 ]
 
 { #category : #accessing }
-ProductOfThisShop >> unitNumber: anObject [
-	unitNumber := anObject
+ProductOfThisShop >> stockUnit: anObject [
+	stockUnit := anObject
 ]

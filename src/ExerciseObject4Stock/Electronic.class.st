@@ -19,7 +19,7 @@ Electronic >> minimumStock: anObject [
 
 { #category : #'as yet unclassified' }
 Electronic >> needToOrder [
-	^ unitNumber < minimumStock
+	^ stockUnit < minimumStock
 ]
 
 { #category : #'as yet unclassified' }

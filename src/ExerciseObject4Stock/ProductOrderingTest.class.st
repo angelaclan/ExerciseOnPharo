@@ -8,7 +8,7 @@ Class {
 ProductOrderingTest >> testBook1NeedsNotToOrder [	
 	| book1 |
 	book1 := Book new name: 'Tomorrow'.
-	book1 unitNumber: 15.
+	book1 stockUnit: 15.
 	self assert: book1 needToOrder equals: false.
 	
 ]
@@ -17,7 +17,7 @@ ProductOrderingTest >> testBook1NeedsNotToOrder [
 ProductOrderingTest >> testBook2NeedsToOrder [
 	| book2 |
 	book2 := Book new name: 'little Prince'.
-	book2 unitNumber: 0.
+	book2 stockUnit: 0.
 	self assert: book2 needToOrder equals: true.
 	
 	
@@ -29,9 +29,9 @@ ProductOrderingTest >> testElectronic1NeedsNotToOrder [
 	electronic1 := Electronic new name: 'iPhone'.
 	electronic1
 		minimumStock: 5;
-		unitNumber: 10.
+		stockUnit: 10.
 	self assert: electronic1 needToOrder equals: false.
-	self assert: electronic1 unitNumber equals: 10
+	self assert: electronic1 stockUnit equals: 10
 ]
 
 { #category : #tests }
@@ -40,7 +40,6 @@ ProductOrderingTest >> testElectronic2NeedsToOrder [
 	electronic2 := Electronic new name: 'Screen'.
 	electronic2
 		minimumStock: 5;
-		unitNumber: 3.
-	self assert: electronic2 needToOrder equals: true.
-	
+		stockUnit: 3.
+	self assert: electronic2 needToOrder equals: true	
 ]

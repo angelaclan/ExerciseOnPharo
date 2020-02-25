@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 Book >> needToOrder [
-	^ unitNumber < 10
+	^ stockUnit < 10
 ]
 
 { #category : #'as yet unclassified' }
