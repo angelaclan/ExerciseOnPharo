@@ -15,10 +15,16 @@ Class {
 }
 
 { #category : #adding }
-Bus >> addPassanger: anEmployee [
-	(self isNotFull and: [ seatsTaken < numberOfSeats ])
-		ifTrue: [ ^ seats add: anEmployee ]
-		ifFalse: [ ^ standups add: anEmployee ]
+Bus >> addPassenger: anEmployee [
+
+	(self canTake: anEmployee)
+		ifFalse: [ IDontWantToGoToWorkError signal: 'Attention! Get off the bus!!!' ]. 
+
+	self hasSeats 
+		ifTrue: [ seats add: anEmployee.
+			numberOfSeats := numberOfSeats - 1 ]
+		ifFalse: [ standups add: anEmployee ]
+
 ]
 
 { #category : #accessing }
@@ -33,7 +39,7 @@ Bus >> bigEnough: anObject [
 
 { #category : #action }
 Bus >> canTake: anEmployee [
-	^ self isNotFull and: [ anEmployee shouldGetOn: self ] 
+	^ self isNotFull and: [ anEmployee shouldGetOn: self ]
 
 ]
 
@@ -56,12 +62,12 @@ Bus >> initialize [
 	standups := OrderedCollection new
 ]
 
-{ #category : #adding }
+{ #category : #status }
 Bus >> isEmpty [
 	^ seats size = 0 and: [ standups size = 0 ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #status }
 Bus >> isNotFull [
 	^ (seats size < numberOfSeats) or: [standups size < numberOfStandups ]
 ]
@@ -84,6 +90,16 @@ Bus >> numberOfStandups [
 { #category : #accessing }
 Bus >> numberOfStandups: anObject [
 	numberOfStandups := anObject
+]
+
+{ #category : #removing }
+Bus >> removePassenger: anEmployee [
+	self isEmpty
+		ifTrue: [ self error: 'Let him go on the bus!' ].
+	^ standups
+		remove: anEmployee
+		ifAbsent: [ seats remove: anEmployee.
+			numberOfSeats := numberOfSeats + 1 ]
 ]
 
 { #category : #accessing }
@@ -124,4 +140,11 @@ Bus >> standupsTaken [
 { #category : #accessing }
 Bus >> standupsTaken: anObject [
 	standupsTaken := anObject
+]
+
+{ #category : #adding }
+Bus >> theFirstPassenger [
+	seats isEmpty 
+		ifFalse: [ ^ seats at: 1 ]
+		ifTrue:[ ^ nil ]
 ]
