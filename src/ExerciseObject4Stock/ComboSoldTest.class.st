@@ -10,10 +10,10 @@ ComboSoldTest >> testCombo1haveSoldOne [
 	book1 stockUnit: 15.
 	book2 stockUnit: 10.
 	combo1 := Combo new.
-	combo1
-		product1: book1;
-		product2: book2;
-		soldComboSet: 1.
+	combo1  
+		addProduct: book1;
+		addProduct: book2.
+		combo1 soldComboSet: 1.
 	self assert: book1 stockUnit equals: 14.
 	self assert: book2 stockUnit equals: 9
 	

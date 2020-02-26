@@ -10,9 +10,10 @@ ComboStockTest >> testCombo1IsAvailable [
 	book1 stockUnit: 15.
 	book2 stockUnit: 10.
 	combo1 := Combo new.
-	combo1
-		product1: book1;
-		product2: book2.
+	combo1 set
+		add: book1;
+		add: book2;
+		yourself.
 	self assert: combo1 isAvailable equals: true
 ]
 
@@ -22,20 +23,22 @@ ComboStockTest >> testCombo1IsNotAvailable [
 	book1 stockUnit: 0.
 	book2 stockUnit: 10.
 	combo1 := Combo new.
-	combo1
-		product1: book1;
-		product2: book2.
+	combo1 set
+		add: book1;
+		add: book2;
+		yourself.
 	self assert: combo1 isAvailable equals: false
 ]
 
 { #category : #tests }
 ComboStockTest >> testCombo2IsNotAvailable [
-	| combo1 |
+	| combo2 |
 	book1 stockUnit: 0.
 	electronic1 stockUnit: 0.
-	combo1 := Combo new.
-	combo1
-		product1: book1;
-		product2: electronic1.
-	self assert: combo1 isAvailable equals: false
+	combo2 := Combo new.
+	combo2 set
+		add: book1;
+		add: electronic1;
+		yourself.
+	self assert: combo2 isAvailable equals: false
 ]
