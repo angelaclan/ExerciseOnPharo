@@ -1,13 +1,12 @@
 Class {
 	#name : #ProductOrderingTest,
-	#superclass : #TestCase,
+	#superclass : #SetUpTest,
 	#category : #ExerciseObject4Stock
 }
 
 { #category : #tests }
 ProductOrderingTest >> testBook1NeedsNotToOrder [	
-	| book1 |
-	book1 := Book new name: 'Tomorrow'.
+	
 	book1 stockUnit: 15.
 	self assert: book1 needToOrder equals: false.
 	
@@ -15,8 +14,7 @@ ProductOrderingTest >> testBook1NeedsNotToOrder [
 
 { #category : #tests }
 ProductOrderingTest >> testBook2NeedsToOrder [
-	| book2 |
-	book2 := Book new name: 'little Prince'.
+	
 	book2 stockUnit: 0.
 	self assert: book2 needToOrder equals: true.
 	
@@ -25,8 +23,7 @@ ProductOrderingTest >> testBook2NeedsToOrder [
 
 { #category : #tests }
 ProductOrderingTest >> testElectronic1NeedsNotToOrder [
-	| electronic1 |
-	electronic1 := Electronic new name: 'iPhone'.
+	
 	electronic1
 		minimumStock: 5;
 		stockUnit: 10.
@@ -36,8 +33,7 @@ ProductOrderingTest >> testElectronic1NeedsNotToOrder [
 
 { #category : #tests }
 ProductOrderingTest >> testElectronic2NeedsToOrder [
-	| electronic2 |
-	electronic2 := Electronic new name: 'Screen'.
+	
 	electronic2
 		minimumStock: 5;
 		stockUnit: 3.
