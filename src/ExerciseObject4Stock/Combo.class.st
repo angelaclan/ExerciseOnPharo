@@ -52,6 +52,9 @@ Combo >> set: anObject [
 
 { #category : #action }
 Combo >> soldComboSet: aNumber [
+	(product1 stockUnit < 1
+		or: product2 stockUnit < 1)
+		ifTrue: [ CannotSellACombo signal: 'No stock for selling as Combo' ].
 	product1 haveSold: aNumber.
 	product2 haveSold: aNumber
 ]

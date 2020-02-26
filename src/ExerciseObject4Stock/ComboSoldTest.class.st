@@ -58,5 +58,5 @@ ComboSoldTest >> testCombo3CannotBeSold [
 	combo3
 		product1: electronic1;
 		product2: electronic2.
-	self assert: combo3 isAvailable equals: false
+	self should:[ combo3 soldComboSet: 1] raise: CannotSellACombo 
 ]
