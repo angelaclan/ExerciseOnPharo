@@ -26,9 +26,9 @@ ComboSoldTest >> testCombo1haveSoldThree [
 	book2 stockUnit: 10.
 	combo1 := Combo new.
 	combo1
-		product1: book1;
-		product2: book2;
-		soldComboSet: 3.
+		addProduct: book1;
+		addProduct: book2.
+	combo1 soldComboSet: 3.
 	self assert: book1 stockUnit equals: 12.
 	self assert: book2 stockUnit equals: 7
 	
@@ -41,9 +41,9 @@ ComboSoldTest >> testCombo2haveSoldFive [
 	electronic2 stockUnit: 10.
 	combo1 := Combo new.
 	combo1
-		product1: book1;
-		product2: electronic2;
-		soldComboSet: 5.
+		addProduct: book1;
+		addProduct: electronic2.
+	combo1 soldComboSet: 5.
 	self assert: book1 stockUnit equals: 10.
 	self assert: electronic2 stockUnit equals: 5
 	
@@ -56,7 +56,8 @@ ComboSoldTest >> testCombo3CannotBeSold [
 	electronic2 stockUnit: 10.
 	combo3 := Combo new.
 	combo3
-		product1: electronic1;
-		product2: electronic2.
+		addProduct: electronic1;
+		addProduct: electronic2.
+		
 	self should:[ combo3 soldComboSet: 1] raise: CannotSellACombo 
 ]

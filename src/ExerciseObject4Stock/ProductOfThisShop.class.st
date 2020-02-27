@@ -14,7 +14,7 @@ ProductOfThisShop >> haveSold: aNumber [
 ]
 
 { #category : #status }
-ProductOfThisShop >> haveStock [
+ProductOfThisShop >> isAvailable [
 	^ stockUnit > 0
 ]
 

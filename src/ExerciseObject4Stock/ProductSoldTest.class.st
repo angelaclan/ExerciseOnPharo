@@ -10,7 +10,7 @@ ProductSoldTest >> testBook1HasSoldOne [
 	book1 stockUnit: 15.
 	book1 haveSold: 2.
 	self assert: book1 stockUnit equals: 13.
-	self assert: book1 haveStock equals: true
+	self assert: book1 isAvailable equals: true
 ]
 
 { #category : #tests }

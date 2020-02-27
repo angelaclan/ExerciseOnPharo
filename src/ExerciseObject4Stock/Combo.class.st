@@ -21,7 +21,7 @@ Combo >> initialize [
 
 { #category : #status }
 Combo >> isAvailable [
-	^ set allSatisfy: [ :product | product stockUnit > 0 ]
+	^ set allSatisfy: [ :product | product isAvailable ]
 ]
 
 { #category : #accessing }
